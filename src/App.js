@@ -1,3 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Violin Practice Companion</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState, useEffect, useRef, useCallback } = React;
+        
 import React, { useState, useEffect, useRef, useCallback } from ‘react’;
 import { Plus, Music, Calendar, Clock, User, BookOpen, Target, Play, CheckCircle, Trash2, Star, Sparkles, Heart, Trophy, Gift, Upload, Volume2, Pause, Save, FileText, Share2, Mail, Printer, Copy, Award, TrendingUp, BarChart3, Settings, Home, ChevronRight, Timer, Zap, Moon, Sun, Library, Edit, X, Download, Link, Smile, PartyPopper, Rocket, Rainbow, Music2, Flower, Dog, Cat, Bird } from ‘lucide-react’;
 
@@ -784,4 +800,9 @@ const SongLibrary = () => (
     })}
   </div>
 </Modal>
-```
+        
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<ViolinPracticeTracker />);
+    </script>
+</body>
+</html>
