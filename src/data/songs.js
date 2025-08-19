@@ -21,21 +21,35 @@ const baseSongs = [
 ];
 
 // Student-specific versions
-export const studentSongs = {
-  violet: baseSongs.map(song => ({
-    ...song,
-    media: [] // you’ll attach media like {type: "mp3", url: "..."}
-  })),
-  theo: baseSongs.map(song => ({
-    ...song,
-    media: []
-  })),
-};
+export const songs = [
+  {
+    id: 1,
+    title: "Twinkle, Twinkle Little Star",
+    book: 1,
+    versions: {
+      Violet: {
+        mp3: "https://drive.google.com/file/d/19MS4hpzY_8yTYwCZpQEg3JXTv1hV69bg/view?usp=drivesdk", // Google Drive direct link
+        videos: [],
+        photos: []
+      },
+      Theo: {
+        mp3: "https://drive.google.com/file/d/1ycFFbxdqHYcmX2HrrB-ShfESC1GXZvnh/view?usp=drivesdk",
+        videos: [],
+        photos: []
+      }
+    }
+  },
+  {
+    id: 2,
+    title: "Lightly Row",
+    book: 1,
+    versions: {
+      Violet: { mp3: "https://drive.google.com/file/d/142njnGLEfHJjN3iMFeoevKz4Yms0-fkL/view?usp=drivesdk", videos: [], photos: [] },
+      Theo: { mp3: "https://drive.google.com/file/d/1wMcqP-jB-lEprboHL-nwKVs_s6j0228z/view?usp=drivesdk" , videos: [], photos: [] }
+    }
+  }
+]; 
 
-// Utility
-export function getStudentSongs(studentId) {
-  return studentSongs[studentId] || [];
-}
 
 // Random review song picker
 export function getRandomReviewSong(studentId, currentSongId) {
