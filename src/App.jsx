@@ -1,35 +1,50 @@
-import React, { useState } from 'react';
-import Confetti from 'react-confetti';
-import LessonForm from './components/LessonForm';
-import PracticeSession from './components/PracticeSession';
-import { suzukiSongs } from './data/songs';
+import React, { useState } from "react";
+import students, { getStudentSongs } from "./data/students";
+import StudentProfile from "./components/StudentProfile";
 
-export default function App() {
-  const [lessons, setLessons] = useState([]);
-  const [confetti, setConfetti] = useState(false);
+function App() {
+  const [activeStudent, setActiveStudent] = useState(null);
 
-  const addLesson = (lesson) => {
-    setLessons([...lessons, lesson]);
-  };
-
-  const celebrate = () => {
-    setConfetti(true);
-    setTimeout(() => setConfetti(false), 3000);
-  };
+  if (!activeStudent) {
+    return (
+      <div style={{ textAlign: "center", padding: "2rem" }}>
+        <h1>Who’s Practicing?</h1>
+        <div style={{ display: "flex", justifyContent: "center", gap: "2rem" }}>
+          {Object.entries(students).map(([name, { avatar, color }]) => (
+            <div
+              key={name}
+              onClick={() => setActiveStudent(name)}
+              style={{
+                cursor: "pointer",
+                textAlign: "center"
+              }}
+            >
+              <img
+                src={avatar}
+                alt={name}
+                style={{
+                  width: "120px",
+                  height: "120px",
+                  borderRadius: "50%",
+                  border: `4px solid ${color}`,
+                  objectFit: "cover"
+                }}
+              />
+              <p>{name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="app">
-      <h1>🎻 Violin Practice Tracker</h1>
-      <LessonForm addLesson={addLesson} />
-      {lessons.map((lesson, idx) => (
-        <PracticeSession
-          key={idx}
-          lesson={lesson}
-          songs={suzukiSongs}
-          onComplete={celebrate}
-        />
-      ))}
-      {confetti && <Confetti />}
-    </div>
+    <StudentProfile
+      studentName={activeStudent}
+      student={students[activeStudent]}
+      onSwitch={() => setActiveStudent(null)}
+    />
   );
 }
+
+export default App;
