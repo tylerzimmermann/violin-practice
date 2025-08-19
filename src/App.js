@@ -1,19 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>Violin Practice Companion</title>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-    <div id="root"></div>
-    <script type="text/babel">
-        const { useState, useEffect, useRef, useCallback } = React;
-        
 import React, { useState, useEffect, useRef, useCallback } from ‘react’;
 import { Plus, Music, Calendar, Clock, User, BookOpen, Target, Play, CheckCircle, Trash2, Star, Sparkles, Heart, Trophy, Gift, Upload, Volume2, Pause, Save, FileText, Share2, Mail, Printer, Copy, Award, TrendingUp, BarChart3, Settings, Home, ChevronRight, Timer, Zap, Moon, Sun, Library, Edit, X, Download, Link, Smile, PartyPopper, Rocket, Rainbow, Music2, Flower, Dog, Cat, Bird } from ‘lucide-react’;
 
@@ -159,7 +143,7 @@ practiceItemTypes: [‘Technique/Skill’, ‘New Song’, ‘Review Pieces’, 
 celebrationAnimations: [
 { icon: Star, animation: ‘stars’, message: “Amazing job!”, color: “text-amber-400” },
 { icon: PartyPopper, animation: ‘confetti’, message: “Party time!”, color: “text-pink-400” },
-{ icon: Rocket, animation: ‘rocket’, message: “You’re soaring!”, color: “text-blue-400” },
+{ icon: Rocket, animation: ‘rocket’, message: “You are soaring!”, color: “text-blue-400” },
 { icon: Rainbow, animation: ‘rainbow’, message: “Beautiful!”, color: “text-purple-400” },
 { icon: Dog, animation: ‘dog’, message: “Pawsome work!”, color: “text-amber-600” },
 { icon: Cat, animation: ‘cat’, message: “Purr-fect!”, color: “text-gray-600” },
@@ -451,11 +435,11 @@ return areas.length > 0 ? areas : [“Continue current excellent progress”];
 
 const shareViaEmail = () => {
 const report = generateShareReport();
-const subject = `${report.studentName}'s Violin Practice Report - Week of ${report.weekStarting}`;
+const subject = `${report.studentName}s Violin Practice Report - Week of ${report.weekStarting}`;
 const body = `
 Dear Teacher,
 
-Here is ${report.studentName}’s practice report for the week:
+Here is ${report.studentName}s practice report for the week:
 
 Current Song: ${report.currentSong}
 Practice Sessions: ${report.practiceCount}
@@ -471,10 +455,10 @@ ${report.areasToImprove.map(a => `- ${a}`).join(’\n’)}
 
 ${report.recentLesson ? `\nMost Recent Lesson Focus:\n${report.recentLesson.practiceItems.map(i => `- ${i.type}: ${i.content}`).join('\n')}` : ‘’}
 
-${report.recentLesson?.teacherNotes ? `\nTeacher's Notes: ${report.recentLesson.teacherNotes}` : ‘’}
+${report.recentLesson?.teacherNotes ? `\nTeachers Notes: ${report.recentLesson.teacherNotes}` : ‘’}
 
 Best regards,
-${report.studentName}’s Parent
+${report.studentName}s Parent
 `;
 
 ```
@@ -486,7 +470,7 @@ window.location.href = `mailto:teacher@email.com?subject=${encodeURIComponent(su
 const copyToClipboard = () => {
 const report = generateShareReport();
 const text = `
-${report.studentName}’s Practice Report
+${report.studentName}s Practice Report
 Week of ${report.weekStarting}
 
 🎻 Current Song: ${report.currentSong}
@@ -785,7 +769,7 @@ const SongLibrary = () => (
               <button
                 onClick={() => {
                   const link = prompt('Enter Google Drive link:');
-                  const type = prompt('Version type (e.g., "Full Tempo", "Slow Practice", "Piano Only"):') || 'Google Drive';
+                  const type = prompt('Version type (e.g., Full Tempo, Slow Practice, Piano Only):') || 'Google Drive';
                   if (link) handleGoogleDriveLink(song.title, link, type);
                 }}
                 className="inline-flex items-center gap-2 text-sm text-blue-500 hover:text-blue-700 cursor-pointer"
@@ -800,6 +784,7 @@ const SongLibrary = () => (
     })}
   </div>
 </Modal>
+```
         
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<ViolinPracticeTracker />);
