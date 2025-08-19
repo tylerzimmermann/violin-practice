@@ -1,7 +1,7 @@
 // Song + media data per student
 const students = {
   Violet: {
-    color: "#a2c8ff", // soft blue
+    color: "#87CEFA", // soft blue
     avatar: "/media/avatars/violet.png", // put this in /public/media/avatars
     songs: [
       {
@@ -21,7 +21,7 @@ const students = {
     ]
   },
   Theo: {
-    color: "#ffd6a2", // soft orange
+    color: "#FFA07A", // soft orange
     avatar: "/media/avatars/theo.png",
     songs: [
       {
@@ -38,6 +38,15 @@ const students = {
 export default students;
 
 // Utility function for fetching songs per student
-export const getStudentSongs = (name) => {
-  return students[name]?.songs || [];
-};
+export const students = [
+  {
+    name: "Violet",
+    avatar: "/avatars/violet.png", // put this file in /public/avatars/
+    color: "#87CEFA" // soft blue
+  },
+  {
+    name: "Theo",
+    avatar: "/avatars/theo.png", // put this file in /public/avatars/
+    color: "#FFA07A" // soft orange
+  }
+];
